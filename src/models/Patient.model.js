@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db.config');
 
-const Patient = sequelize.define('patients', {
+const Patient = sequelize.define('Patient', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -27,7 +27,7 @@ const Patient = sequelize.define('patients', {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: 'Doctors',
+      model: 'Doctor',
       key: 'id',
     },
   },

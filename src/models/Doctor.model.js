@@ -29,7 +29,8 @@ const Doctor = sequelize.define('Doctor', {
     allowNull: false,
     unique: true,
   },
-  tableName: 'doctors',
+}, {
+  tableName: 'doctors'
 });
 
 module.exports = Doctor;

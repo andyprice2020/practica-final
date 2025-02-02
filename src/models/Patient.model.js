@@ -27,10 +27,11 @@ const Patient = sequelize.define('Patient', {
     type: DataTypes.INTEGER,
     allowNull: false,
     references: {
-      model: 'Doctor',
+      model: 'doctors',
       key: 'id',
     },
   },
+}, {
   tableName: 'patients',
 });
 

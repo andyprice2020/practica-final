@@ -9,7 +9,7 @@ sequelize
   .authenticate()
   .then(() => {
     console.log('Conexión a la base de datos establecida correctamente.');
-    return sequelize.sync(); // Sincronizar modelos con la base de datos
+    return sequelize.sync({ force: true }); // Sincronizar modelos con la base de datos
   })
   .then(async () => {
     // Cargar datos iniciales

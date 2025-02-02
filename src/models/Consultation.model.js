@@ -38,7 +38,8 @@ const Consultation = sequelize.define('Consultation', {
       model: 'Doctor',
       key: 'id',
     },
-  },  
+  },
+  tableName: 'consultations',
 });
 
 module.exports = Consultation;

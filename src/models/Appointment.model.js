@@ -30,7 +30,8 @@ const Appointment = sequelize.define('Appointment', {
       model: 'Doctor',
       key: 'id',
     },
-  },
+  }, 
+  tableName: 'appointments',
 });
 
 module.exports = Appointment;

@@ -31,6 +31,7 @@ const Patient = sequelize.define('Patient', {
       key: 'id',
     },
   },
+  tableName: 'patients',
 });
 
 module.exports = Patient;

@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../config/db.config.js');
+const sequelize = require('../config/db.config');
 
 const Doctor = sequelize.define('Doctor', {
   id: {
@@ -28,7 +28,8 @@ const Doctor = sequelize.define('Doctor', {
     type: DataTypes.STRING,
     allowNull: false,
     unique: true,
-  },  
+  },
+  tableName: 'doctors',
 });
 
 module.exports = Doctor;

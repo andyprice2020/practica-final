@@ -9,13 +9,13 @@ services:
     ports:
       - "3000:3000"  # Mapear el puerto 3000 del contenedor al puerto 3000 del host
     environment:
-      - DB_HOST=localhost
+      - DB_HOST=db
       - DB_PORT=5432
       - DB_NAME=consultorio-pediatrico
       - DB_USER=postgres
       - DB_PASSWORD=D3v310p34*DF5
     depends_on:
-      - localhost
+      - db
     volumes:
       - .:/usr/src/app  # Montar el código fuente en el contenedor
       - /usr/src/app/node_modules  # Evitar sobrescribir node_modules

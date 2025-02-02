@@ -5,7 +5,7 @@ const Patient = sequelize.define('patients', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
-    autoIncrement: true,
+    autoIncrement: false,
   },
   name: {
     type: DataTypes.STRING,

@@ -6,7 +6,7 @@ const doctorController = require('../controllers/doctor.controller');
 router.post('/', doctorController.createDoctor);
 
 // Obtener todos los doctores
-router.get('/', doctorController.getDoctor);
+router.get('/', doctorController.getDoctors);
 
 // Obtener un doctor por su ID
 router.get('/:id', doctorController.getDoctorById);

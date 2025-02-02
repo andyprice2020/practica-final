@@ -1,6 +1,6 @@
 const app = require('./app');
-const sequelize = require('./config/db.config');
-const loadInitialData = require('./seeders/initialData');
+const sequelize = require('./src/config/db.config');
+const loadInitialData = require('./src/seeders/initialData');
 
 const PORT = process.env.PORT || 3000;
 

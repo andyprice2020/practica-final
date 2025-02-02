@@ -6,7 +6,7 @@ const consultationController = require('../controllers/consultation.controller')
 router.post('/', consultationController.createConsultation);
 
 // Obtener todas las consultas
-router.get('/', consultationController.getConsultation);
+router.get('/', consultationController.getConsultations);
 
 // Obtener una consulta por su ID
 router.get('/:id', consultationController.getConsultationById);

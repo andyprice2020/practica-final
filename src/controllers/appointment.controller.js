@@ -23,7 +23,7 @@ exports.createAppointment = async (req, res) => {
   }
 };
 
-exports.getAppointment = async (req, res) => {
+exports.getAppointments = async (req, res) => {
   try {
     const appointments = await Appointment.findAll();
     res.status(200).json(appointments);

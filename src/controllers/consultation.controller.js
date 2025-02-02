@@ -23,7 +23,7 @@ exports.createConsultation = async (req, res) => {
   }
 };
 
-exports.getConsultation = async (req, res) => {
+exports.getConsultations = async (req, res) => {
   try {
     const consultations = await Consultation.findAll();
     res.status(200).json(consultations);
@@ -71,7 +71,7 @@ exports.updateConsultation = async (req, res) => {
   }
 };
 
-exports.deleteConsulta = async (req, res) => {
+exports.deleteConsultation = async (req, res) => {
   try {
     const consultation = await Consultation.findByPk(req.params.id);
     if (!consultation) {

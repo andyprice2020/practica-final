@@ -6,7 +6,7 @@ const patientController = require('../controllers/patient.controller');
 router.post('/', patientController.createPatient);
 
 // Obtener todos los pacientes
-router.get('/', patientController.getPatient);
+router.get('/', patientController.getPatients);
 
 // Obtener un paciente por su ID
 router.get('/:id', patientController.getPatientById);

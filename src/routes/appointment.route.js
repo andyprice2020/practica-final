@@ -6,7 +6,7 @@ const appointmentController = require('../controllers/appointment.controller');
 router.post('/', appointmentController.createAppointment);
 
 // Obtener todas las citas
-router.get('/', appointmentController.getAppointment);
+router.get('/', appointmentController.getAppointments);
 
 // Obtener una cita por su ID
 router.get('/:id', appointmentController.getAppointmentById);

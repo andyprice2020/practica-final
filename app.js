@@ -1,4 +1,7 @@
 const express = require('express');
+const cors = require('cors'); // Importar el paquete cors
+
+// Importar las rutas
 const doctorRoutes = require('./src/routes/doctor.route');
 const patientRoutes = require('./src/routes/patient.route');
 const appointmentRoutes = require('./src/routes/appointment.route');
@@ -6,6 +9,13 @@ const consultationRoutes = require('./src/routes/consultation.route');
 
 // Crear la aplicación Express
 const app = express();
+
+// Configurar CORS
+app.use(cors({
+  origin: 'http://localhost:5173', // Permitir solicitudes desde el frontend (Vue.js)
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos HTTP permitidos
+  allowedHeaders: ['Content-Type', 'Authorization'], // Cabeceras permitidas
+}));
 
 // Middleware para manejar solicitudes JSON
 app.use(express.json());

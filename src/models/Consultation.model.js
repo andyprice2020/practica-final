@@ -5,7 +5,7 @@ const Consultation = sequelize.define('Consultation', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
-    autoIncrement: false,
+    autoIncrement: true,
   },
   diagnosis: {
     type: DataTypes.TEXT,

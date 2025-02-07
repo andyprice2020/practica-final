@@ -5,7 +5,7 @@ const Appointment = sequelize.define('Appointment', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
-    autoIncrement: false,
+    autoIncrement: true,
   },
   date: {
     type: DataTypes.DATE,

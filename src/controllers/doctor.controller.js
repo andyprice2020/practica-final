@@ -32,7 +32,7 @@ exports.getDoctors = async (req, res) => {
     const doctors = await Doctor.findAll();
     res.status(200).json(doctors);
   } catch (error) {
-    res.status(500).json({ error: 'Error al obtener todos los registros.', details: error.message });
+    res.status(500).json({ error: 'Error al obtener todos los registros.', details: error.errors.map(err => err.message) });
   }
 };
 
@@ -44,7 +44,7 @@ exports.getDoctorById = async (req, res) => {
     }
     res.status(200).json(doctor);
   } catch (error) {
-    res.status(500).json({ error: 'Error al obtener el registro, favor verifique', details: error.message });
+    res.status(500).json({ error: 'Error al obtener el registro, favor verifique', details: error.errors.map(err => err.message) });
   }
 };
 
@@ -63,7 +63,7 @@ exports.updateDoctor = async (req, res) => {
       return res.status(404).json({ error: 'Registro no encontrado.' });
     }
 
-    await doctor.update({ name, specialization, email, phone });
+    await doctor.update({ name, specialty, phone, address, email });
     res.status(202).json(doctor);
   } catch (error) {
     //Manejo de errores de Sequelize
@@ -71,7 +71,7 @@ exports.updateDoctor = async (req, res) => {
       return res.status(400).json({ error: 'Error de validación', details: error.errors.map(err => err.message) });
     }
     // Manejo de otros tipos de errores
-    res.status(500).json({ error: 'Error al actualizar el registro, favor verifique', details: error.message });
+    res.status(500).json({ error: 'Error al actualizar el registro, favor verifique', details: error.errors.map(err => err.message) });
   }
 };
 
@@ -85,6 +85,6 @@ exports.deleteDoctor = async (req, res) => {
     await doctor.destroy();
     res.status(204).json();
   } catch (error) {
-    res.status(500).json({ error: 'Error al eliminar el registro, favor verifique', details: error.message });
+    res.status(500).json({ error: 'Error al eliminar el registro, favor verifique', details: error.errors.map(err => err.message) });
   }
 };

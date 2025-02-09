@@ -20,7 +20,7 @@ services:
 
   # Servicio para el frontend (React, Angular, etc.)
   frontend:
-    image: galbino/consultorio-pediatrico-frontend:v0.1.0
+    image: galbino/consultorio-pediatrico-frontend:v0.1.1
     container_name: frontend-consultorio
     restart: always
     ports:

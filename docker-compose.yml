@@ -1,39 +1,53 @@
-version: '3.8'
 
 services:
-  # Servicio para la aplicación Node.js
-  app:
-    build: .  # Construir la imagen usando el Dockerfile
-    container_name: app-consultorio-pediatrico
+  # Servicio para el backend (Node.js)
+  backend:
+    image: galbino/consultorio-pediatrico:v0.1.2
+    container_name: backend-consultorio
     restart: always
     ports:
-      - "3000:3000"  # Mapear el puerto 3000 del contenedor al puerto 3000 del host
+      - "3000:3000"
+    networks:
+      - consultorio_network
     environment:
       - DB_HOST=db
-      - DB_PORT=5432
-      - DB_NAME=consultorio-pediatrico
-      - DB_USER=postgres
-      - DB_PASSWORD=D3v310p34*DF5
+      - DB_PORT=${DB_PORT}
+      - DB_NAME=${DB_NAME}
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
     depends_on:
       - db
-    volumes:
-      - .:/usr/src/app  # Montar el código fuente en el contenedor
-      - /usr/src/app/node_modules  # Evitar sobrescribir node_modules
 
-  # Servicio para la base de datos PostgreSQL
+  # Servicio para el frontend (React, Angular, etc.)
+  frontend:
+    image: galbino/consultorio-pediatrico-frontend:v0.1.0
+    container_name: frontend-consultorio
+    restart: always
+    ports:
+      - "8080:80"
+    networks:
+      - consultorio_network
+    depends_on:
+      - backend
+
   db:
-    image: postgres:16.6-alpine3.21  # Usar la imagen oficial de PostgreSQL
-    container_name: consultorio-pediatrico-db
+    image: postgres:16.6-alpine3.21
+    container_name: consultorio-db
     restart: always
     environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: consultorio-pediatrico
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
     ports:
-      - "5432:5432"  # Mapear el puerto 5432 del contenedor al puerto 5432 del host
+      - "5432:5432"
+    networks:
+      - consultorio_network
     volumes:
-      - pgdata:/var/lib/postgresql/data  # Volumen para persistencia de datos
+      - pgdata:/var/lib/postgresql/data
 
-# Volumen para persistencia de la base de datos
+networks:
+  consultorio_network:
+    driver: bridge
+
 volumes:
   pgdata:

@@ -17,19 +17,6 @@ services:
       - DB_PASSWORD=${DB_PASSWORD}
     depends_on:
       - db
-
-  # Servicio para el frontend (React, Angular, etc.)
-  frontend:
-    image: galbino/consultorio-pediatrico-frontend:v0.1.1
-    container_name: frontend-consultorio
-    restart: always
-    ports:
-      - "8080:80"
-    networks:
-      - consultorio_network
-    depends_on:
-      - backend
-
   db:
     image: postgres:16.6-alpine3.21
     container_name: consultorio-db
@@ -44,6 +31,18 @@ services:
       - consultorio_network
     volumes:
       - pgdata:/var/lib/postgresql/data
+
+  # Servicio para el frontend (React, Angular, etc.)
+  frontend:
+    image: galbino/consultorio-pediatrico-frontend:v0.1.1
+    container_name: frontend-consultorio
+    restart: always
+    ports:
+      - "8080:80"
+    networks:
+      - consultorio_network
+    depends_on:
+      - backend
 
 networks:
   consultorio_network:

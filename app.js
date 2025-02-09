@@ -9,7 +9,7 @@ const consultationRoutes = require('./src/routes/consultation.route');
 const app = express();
 // Configurar CORS
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: 'http://localhost:8080',
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));

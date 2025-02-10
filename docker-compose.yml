@@ -22,7 +22,7 @@ services:
     container_name: consultorio-db
     restart: always
     environment:
-      POSTGRES_USER: ${}
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: D3v310p34*DF$
       POSTGRES_DB: consultorio-pediatrico
     ports:
@@ -31,6 +31,7 @@ services:
       - consultorio_network
     volumes:
       - pgdata:/var/lib/postgresql/data
+      - ./init_data.sql:/docker-entrypoint-initdb.d/init_data.sql
 
   # Servicio para el frontend (React, Angular, etc.)
   frontend:

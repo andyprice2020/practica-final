@@ -1,6 +1,6 @@
 const app = require('./app');
 const sequelize = require('./src/config/db.config');
-const loadInitialData = require('./src/seeders/initialData');
+//const loadInitialData = require('./src/seeders/initialData');
 
 const PORT = process.env.PORT || 3000;
 
@@ -13,7 +13,7 @@ sequelize
   })
   .then(async () => {
     // Cargar datos iniciales
-    await loadInitialData();
+    // await loadInitialData();
 
     // Iniciar el servidor
     app.listen(PORT, () => {

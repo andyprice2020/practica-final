@@ -2,7 +2,7 @@
 services:
   # Servicio para el backend (Node.js)
   backend:
-    image: galbino/consultorio-pediatrico:v0.1.2
+    image: galbino/consultorio-pediatrico:v0.1.3
     container_name: backend-consultorio
     restart: always
     ports:
@@ -35,7 +35,7 @@ services:
 
   # Servicio para el frontend (React, Angular, etc.)
   frontend:
-    image: galbino/consultorio-pediatrico-frontend:v0.1.1
+    image: galbino/consultorio-pediatrico-frontend:v0.1.3
     container_name: frontend-consultorio
     restart: always
     ports:
